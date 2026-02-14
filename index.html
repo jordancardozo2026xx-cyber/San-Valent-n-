@@ -12,287 +12,146 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* ------------------- PANTALLA DE PRESENTACIÓN ------------------- */
-        #presentacion {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #ff69b4;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: all 1s ease;
-        }
-        .kitty-presentacion {
-            font-size: 5rem;
-            color: #fff;
-            margin-bottom: 2rem;
-            animation: saltar 1.5s infinite;
-        }
-        .titulo-presentacion {
-            font-size: 2rem;
-            color: #fff;
-            text-align: center;
-            margin-bottom: 3rem;
-            text-shadow: 0 0 15px #ff0080;
-        }
-        .btn-invitar {
-            padding: 1rem 3rem;
-            background: #ff0080;
-            color: #fff;
-            font-size: 1.5rem;
-            border: 3px solid #fff;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 0 20px #ff0080;
-            transition: transform 0.3s;
-        }
-        .btn-invitar:hover {
-            transform: scale(1.1);
-        }
-
-        /* ------------------- SITIO PRINCIPAL ------------------- */
-        #sitio {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        /* Fondo con estrellas brillantes */
-        .fondo {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        .estrella {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #fff;
-            border-radius: 50%;
-            animation: brillar 2s infinite alternate;
-        }
-        /* Hello Kitty definitivo */
-        .hello-kitty {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background-image: url('https://cdn-icons-png.flaticon.com/512/1808/1808603.png');
-            background-size: cover;
-            z-index: 5;
-            animation: flotar 25s infinite linear;
-        }
-        /* Textos románticos */
-        .texto {
-            position: absolute;
-            color: #ff69b4;
-            font-size: 1rem;
-            text-shadow: 0 0 10px #ff0080;
-            z-index: 4;
-            animation: flotar 20s infinite linear;
-            transform: rotate(var(--rot, 0deg));
-        }
-        /* Lazos bonitos */
-        .lazo {
-            position: absolute;
-            font-size: 1.2rem;
-            color: #ff0080;
-            text-shadow: 0 0 15px #ff0080;
-            z-index: 4;
-            animation: flotar 22s infinite linear;
-        }
-        /* Anillos perfectos */
-        .anillos {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 6;
-        }
-        .anillo {
-            position: absolute;
-            border: 3px solid #ff0080;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #ff0080, 0 0 30px #ff0080, 0 0 45px #ff0080;
-        }
-        .anillo1 {
-            width: 180px;
-            height: 180px;
-            animation: girar 10s infinite linear;
-        }
-        .anillo2 {
-            width: 130px;
-            height: 130px;
-            top: 25px;
-            left: 25px;
-            animation: girar 8s infinite reverse linear;
-        }
-        /* Botón de música */
-        .btn-musica {
-            position: absolute;
-            bottom: 3%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 0.8rem 1.5rem;
-            background: #ff0080;
-            color: #fff;
-            border: 2px solid #fff;
-            border-radius: 30px;
-            z-index: 10;
-            cursor: pointer;
-            box-shadow: 0 0 15px #ff0080;
-        }
         /* Título principal */
-        .titulo-principal {
+        .titulo-superior {
             position: absolute;
             top: 5%;
             left: 50%;
             transform: translateX(-50%);
             color: #ff69b4;
-            font-size: 2rem;
-            text-shadow: 0 0 15px #ff0080, 0 0 30px #ff0080;
-            z-index: 7;
+            text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4;
             text-align: center;
+            z-index: 10;
+        }
+        .titulo-superior h1 { font-size: 2rem; }
+        .titulo-superior h2 { font-size: 2.5rem; margin-top: 1rem; }
+
+        /* Anillos centrales */
+        .anillos {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+        }
+        .anillo {
+            position: absolute;
+            border: 4px solid #ff69b4;
+            border-radius: 50%;
+            box-shadow: 0 0 25px #ff69b4, 0 0 50px #ff69b4;
+        }
+        .anillo1 { width: 200px; height: 200px; animation: girar 8s linear infinite; }
+        .anillo2 { width: 150px; height: 150px; top: 25px; left: 25px; animation: girar 6s reverse linear infinite; }
+
+        /* Elementos flotantes */
+        .elemento-flotante {
+            position: absolute;
+            z-index: 3;
+            animation: flotar 20s linear infinite;
+        }
+        .kitty-icono {
+            font-size: 2rem;
+            color: #ff69b4;
+            text-shadow: 0 0 10px #ff69b4;
+        }
+        .texto-romantico {
+            color: #ffc0cb;
+            font-size: 1rem;
+            text-shadow: 0 0 10px #ff69b4;
+            transform: rotate(var(--rot, 0deg));
+        }
+        .lazo-icono {
+            font-size: 1.5rem;
+            color: #ff69b4;
+            text-shadow: 0 0 10px #ff69b4;
         }
 
-        /* ------------------- ANIMACIONES ------------------- */
-        @keyframes saltar {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        /* Botón de música */
+        .btn-musica {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.8rem 1.5rem;
+            background: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 0 15px #ff69b4;
+            cursor: pointer;
+            z-index: 10;
         }
-        @keyframes brillar {
-            0% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
+
+        /* Animaciones */
         @keyframes girar {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
         @keyframes flotar {
-            0% { 
-                transform: translateY(100vh) rotate(0deg) scale(0.8); 
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 1; }
-            100% { 
-                transform: translateY(-10vh) rotate(30deg) scale(1.2); 
-                opacity: 0;
-            }
+            100% { transform: translateY(-10vh) rotate(30deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <!-- PANTALLA DE PRESENTACIÓN -->
-    <div id="presentacion">
-        <div class="kitty-presentacion">🎀</div>
-        <h1 class="titulo-presentacion">Para mi amor YARLYN SANDRA</h1>
-        <button class="btn-invitar" id="btnInvitar">¿QUIERES SER MI SAN VALENTÍN?</button>
+    <div class="titulo-superior">
+        <h1>FELIZ DÍA DEL AMOR</h1>
+        <h2>YARLYN SANDRA</h2>
     </div>
 
-    <!-- SITIO PRINCIPAL -->
-    <div id="sitio">
-        <div class="fondo" id="fondo"></div>
-        <div class="titulo-principal">FELIZ DÍA DEL AMOR<br>YARLYN SANDRA</div>
-        <div class="anillos">
-            <div class="anillo anillo1"></div>
-            <div class="anillo anillo2"></div>
-        </div>
-        <button class="btn-musica" id="btnMusica">Reproducir Música</button>
-        <audio id="musica" loop>
-            <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_0d505081a5.mp3?filename=romantic-piano-100-bpm-121996.mp3" type="audio/mpeg">
-        
+    <div class="anillos">
+        <div class="anillo anillo1"></div>
+        <div class="anillo anillo2"></div>
     </div>
+
+    <button class="btn-musica" id="btnMusica">Pausar Música</button>
+    <audio id="musica" loop autoplay>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_0d505081a5.mp3?filename=romantic-piano-100-bpm-121996.mp3" type="audio/mpeg">
+    
 
     <script>
-        // ------------------- CONTROL PRESENTACIÓN -------------------
-        const btnInvitar = document.getElementById('btnInvitar');
-        const presentacion = document.getElementById('presentacion');
-        const sitio = document.getElementById('sitio');
+        // Control de música
         const musica = document.getElementById('musica');
         const btnMusica = document.getElementById('btnMusica');
-
-        btnInvitar.addEventListener('click', () => {
-            presentacion.style.opacity = 0;
-            setTimeout(() => {
-                presentacion.style.display = 'none';
-                sitio.style.display = 'block';
-                iniciarSitio();
-            }, 1000);
+        btnMusica.addEventListener('click', () => {
+            if(musica.paused) {
+                musica.play();
+                btnMusica.textContent = "Pausar Música";
+            } else {
+                musica.pause();
+                btnMusica.textContent = "Reproducir Música";
+            }
         });
 
-        // ------------------- INICIAR SITIO PRINCIPAL -------------------
-        function iniciarSitio() {
-            // Crear fondo de estrellas
-            const fondo = document.getElementById('fondo');
-            for(let i=0; i<150; i++) {
-                const estrella = document.createElement('div');
-                estrella.classList.add('estrella');
-                estrella.style.left = `${Math.random()*100}%`;
-                estrella.style.top = `${Math.random()*100}%`;
-                estrella.style.animationDuration = `${Math.random()*3 + 2}s`;
-                fondo.appendChild(estrella);
+        // Crear elementos flotantes (Hello Kitty, textos y lazos)
+        const elementos = ["🎀", "Te amo hoy y siempre", "🎀", "Mi amor eterno", "🎀", "Para siempre juntos", "🎀", "Eres mi todo"];
+        function crearElemento() {
+            const elem = document.createElement('div');
+            elem.classList.add('elemento-flotante');
+            
+            const tipo = Math.floor(Math.random()*3);
+            if(tipo === 0) {
+                elem.classList.add('kitty-icono');
+                elem.textContent = "🎀";
+            } else if(tipo === 1) {
+                elem.classList.add('texto-romantico');
+                elem.textContent = elementos[Math.floor(Math.random()*elementos.length)];
+                elem.style.setProperty('--rot', `${Math.random()*40 - 20}deg`);
+            } else {
+                elem.classList.add('lazo-icono');
+                elem.textContent = "🎀";
             }
 
-            // Crear Hello Kitty
-            function crearKitty() {
-                const kitty = document.createElement('div');
-                kitty.classList.add('hello-kitty');
-                kitty.style.left = `${Math.random()*90 + 5}%`;
-                kitty.style.top = `${Math.random()*100 + 50}%`;
-                kitty.style.animationDuration = `${Math.random()*20 + 15}s`;
-                sitio.appendChild(kitty);
-                setTimeout(() => kitty.remove(), 30000);
-            }
-            setInterval(crearKitty, 1500);
-
-            // Crear textos
-            const frases = ["Te amo hoy y siempre", "Mi amor eterno", "Eres mi corazón", 
-                            "Contigo es todo", "Para siempre juntos", "Eres mi todo"];
-            function crearTexto() {
-                const texto = document.createElement('div');
-                texto.classList.add('texto');
-                texto.textContent = frases[Math.floor(Math.random()*frases.length)];
-                texto.style.left = `${Math.random()*90 + 5}%`;
-                texto.style.top = `${Math.random()*100 + 50}%`;
-                texto.style.setProperty('--rot', `${Math.random()*40 - 20}deg`);
-                texto.style.animationDuration = `${Math.random()*20 + 15}s`;
-                sitio.appendChild(texto);
-                setTimeout(() => texto.remove(), 30000);
-            }
-            setInterval(crearTexto, 1000);
-
-            // Crear lazos
-            function crearLazo() {
-                const lazo = document.createElement('div');
-                lazo.classList.add('lazo');
-                lazo.textContent = "🎀";
-                lazo.style.left = `${Math.random()*90 + 5}%`;
-                lazo.style.top = `${Math.random()*100 + 50}%`;
-                lazo.style.animationDuration = `${Math.random()*20 + 18}s`;
-                sitio.appendChild(lazo);
-                setTimeout(() => lazo.remove(), 35000);
-            }
-            setInterval(crearLazo, 2000);
-
-            // Control música
-            btnMusica.addEventListener('click', () => {
-                if(musica.paused) {
-                    musica.play();
-                    btnMusica.textContent = "Pausar Música";
-                } else {
-                    musica.pause();
-                    btnMusica.textContent = "Reproducir Música";
-                }
-            });
+            elem.style.left = `${Math.random()*100}%`;
+            elem.style.animationDuration = `${Math.random()*20 + 10}s`;
+            document.body.appendChild(elem);
+            
+            setTimeout(() => elem.remove(), 30000);
         }
+
+        setInterval(crearElemento, 1500);
     </script>
 </body>
 </html>
