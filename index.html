@@ -3,89 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Para YARLYN SANDRA - San Valentín</title>
+    <title>Para YARLYN SANDRA</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            overflow: hidden; 
-            background: #000; 
-            font-family: 'Arial', sans-serif;
+        /* ------------------- PRESENTACIÓN ------------------- */
+        #presentacion {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ff69b4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .kitty-presentacion {
+            font-size: 5rem;
+            color: #fff;
+            margin-bottom: 2rem;
+            animation: saltar 1.5s infinite;
+        }
+        .titulo-presentacion {
+            font-size: 2rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px #fff;
+        }
+        .btn-invitar {
+            padding: 1rem 3rem;
+            background: #ff0080;
+            color: #fff;
+            font-size: 1.5rem;
+            border: 3px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            text-shadow: 0 0 10px #fff;
+            box-shadow: 0 0 20px #ff0080;
         }
 
-        /* Título principal */
-        .titulo-superior {
+        /* ------------------- SITIO PRINCIPAL ------------------- */
+        #sitio {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+        .fondo-universo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,105,180,0.2) 0%, rgba(0,0,0,0) 80%);
+        }
+        .titulo-sitio {
             position: absolute;
             top: 5%;
             left: 50%;
             transform: translateX(-50%);
             color: #ff69b4;
-            text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4;
             text-align: center;
-            z-index: 10;
+            text-shadow: 0 0 15px #ff69b4;
         }
-        .titulo-superior h1 { font-size: 2rem; }
-        .titulo-superior h2 { font-size: 2.5rem; margin-top: 1rem; }
+        .titulo-sitio h1 { font-size: 2rem; }
+        .titulo-sitio h2 { font-size: 2.5rem; }
 
-        /* Anillos centrales */
+        /* ANILLOS CENTRALES */
         .anillos {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 5;
         }
-        .anillo {
-            position: absolute;
+        .anillo-grande {
+            width: 200px;
+            height: 200px;
             border: 4px solid #ff69b4;
             border-radius: 50%;
-            box-shadow: 0 0 25px #ff69b4, 0 0 50px #ff69b4;
+            box-shadow: 0 0 30px #ff69b4;
+            animation: girar 10s linear infinite;
         }
-        .anillo1 { width: 200px; height: 200px; animation: girar 8s linear infinite; }
-        .anillo2 { width: 150px; height: 150px; top: 25px; left: 25px; animation: girar 6s reverse linear infinite; }
+        .anillo-chico {
+            width: 150px;
+            height: 150px;
+            border: 4px solid #ff0080;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #ff0080;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            animation: girar-rev 8s linear infinite;
+        }
 
-        /* Elementos flotantes */
+        /* ELEMENTOS FLOTANTES */
         .elemento-flotante {
             position: absolute;
-            z-index: 3;
+            color: #ff69b4;
+            text-shadow: 0 0 10px #ff69b4;
             animation: flotar 20s linear infinite;
         }
-        .kitty-icono {
+        .kitty-flotante {
             font-size: 2rem;
             color: #ff69b4;
-            text-shadow: 0 0 10px #ff69b4;
+            text-shadow: 0 0 15px #ff69b4;
         }
-        .texto-romantico {
-            color: #ffc0cb;
+        .texto-flotante {
             font-size: 1rem;
-            text-shadow: 0 0 10px #ff69b4;
-            transform: rotate(var(--rot, 0deg));
-        }
-        .lazo-icono {
-            font-size: 1.5rem;
-            color: #ff69b4;
-            text-shadow: 0 0 10px #ff69b4;
         }
 
-        /* Botón de música */
-        .btn-musica {
-            position: absolute;
-            bottom: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 0.8rem 1.5rem;
-            background: #ff69b4;
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            box-shadow: 0 0 15px #ff69b4;
-            cursor: pointer;
-            z-index: 10;
+        /* ------------------- ANIMACIONES ------------------- */
+        @keyframes saltar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
-
-        /* Animaciones */
         @keyframes girar {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        @keyframes girar-rev {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
         }
         @keyframes flotar {
             0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
@@ -96,62 +139,64 @@
     </style>
 </head>
 <body>
-    <div class="titulo-superior">
-        <h1>FELIZ DÍA DEL AMOR</h1>
-        <h2>YARLYN SANDRA</h2>
+    <!-- PRESENTACIÓN -->
+    <div id="presentacion">
+        <div class="kitty-presentacion">🎀</div>
+        <h1 class="titulo-presentacion">Para mi amor YARLYN SANDRA</h1>
+        <button class="btn-invitar" id="btn-presentacion">¿QUIERES SER MI SAN VALENTÍN?</button>
     </div>
 
-    <div class="anillos">
-        <div class="anillo anillo1"></div>
-        <div class="anillo anillo2"></div>
+    <!-- SITIO PRINCIPAL -->
+    <div id="sitio">
+        <div class="fondo-universo"></div>
+        <div class="titulo-sitio">
+            <h1>FELIZ DÍA DEL AMOR</h1>
+            <h2>YARLYN SANDRA</h2>
+        </div>
+        <div class="anillos">
+            <div class="anillo-grande"></div>
+            <div class="anillo-chico"></div>
+        </div>
     </div>
-
-    <button class="btn-musica" id="btnMusica">Pausar Música</button>
-    <audio id="musica" loop autoplay>
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_0d505081a5.mp3?filename=romantic-piano-100-bpm-121996.mp3" type="audio/mpeg">
-    
 
     <script>
-        // Control de música
-        const musica = document.getElementById('musica');
-        const btnMusica = document.getElementById('btnMusica');
-        btnMusica.addEventListener('click', () => {
-            if(musica.paused) {
-                musica.play();
-                btnMusica.textContent = "Pausar Música";
-            } else {
-                musica.pause();
-                btnMusica.textContent = "Reproducir Música";
-            }
+        // CONTROL PRESENTACIÓN
+        const btnPresentacion = document.getElementById('btn-presentacion');
+        const presentacion = document.getElementById('presentacion');
+        const sitio = document.getElementById('sitio');
+
+        btnPresentacion.addEventListener('click', () => {
+            presentacion.style.display = 'none';
+            sitio.style.display = 'block';
+            crearElementosFlotantes();
         });
 
-        // Crear elementos flotantes (Hello Kitty, textos y lazos)
-        const elementos = ["🎀", "Te amo hoy y siempre", "🎀", "Mi amor eterno", "🎀", "Para siempre juntos", "🎀", "Eres mi todo"];
-        function crearElemento() {
-            const elem = document.createElement('div');
-            elem.classList.add('elemento-flotante');
+        // CREAR ELEMENTOS FLOTANTES
+        function crearElementosFlotantes() {
+            const textos = ["Te amo hoy y siempre", "Mi amor eterno", "Eres mi corazón", "Para siempre juntos", "Eres mi todo"];
             
-            const tipo = Math.floor(Math.random()*3);
-            if(tipo === 0) {
-                elem.classList.add('kitty-icono');
-                elem.textContent = "🎀";
-            } else if(tipo === 1) {
-                elem.classList.add('texto-romantico');
-                elem.textContent = elementos[Math.floor(Math.random()*elementos.length)];
-                elem.style.setProperty('--rot', `${Math.random()*40 - 20}deg`);
-            } else {
-                elem.classList.add('lazo-icono');
-                elem.textContent = "🎀";
-            }
+            // HELLO KITTY FLOTANTES
+            setInterval(() => {
+                const kitty = document.createElement('div');
+                kitty.classList.add('elemento-flotante', 'kitty-flotante');
+                kitty.textContent = "🎀";
+                kitty.style.left = Math.random() * 100 + '%';
+                kitty.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                sitio.appendChild(kitty);
+                setTimeout(() => kitty.remove(), 30000);
+            }, 1500);
 
-            elem.style.left = `${Math.random()*100}%`;
-            elem.style.animationDuration = `${Math.random()*20 + 10}s`;
-            document.body.appendChild(elem);
-            
-            setTimeout(() => elem.remove(), 30000);
+            // TEXTOS FLOTANTES
+            setInterval(() => {
+                const texto = document.createElement('div');
+                texto.classList.add('elemento-flotante', 'texto-flotante');
+                texto.textContent = textos[Math.floor(Math.random() * textos.length)];
+                texto.style.left = Math.random() * 100 + '%';
+                texto.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                sitio.appendChild(texto);
+                setTimeout(() => texto.remove(), 30000);
+            }, 1000);
         }
-
-        setInterval(crearElemento, 1500);
     </script>
 </body>
 </html>
