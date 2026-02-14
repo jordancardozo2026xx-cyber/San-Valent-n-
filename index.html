@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Para YARLYN SANDRA - San Valentín</title>
+    <style>
+        /* ------------------- PANTALLA DE PRESENTACIÓN ------------------- */
+        #presentacion {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ff69b4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .kitty-icono {
+            font-size: 5rem;
+            color: #fff;
+            text-shadow: 0 0 15px #fff, 0 0 30px #fff;
+            margin-bottom: 2rem;
+            animation: saltar 1.5s infinite;
+        }
+        .titulo-presentacion {
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 0 10px #fff;
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+        .btn-invitar {
+            padding: 1.2rem 2.5rem;
+            background: #ff0080;
+            color: #fff;
+            font-size: 1.3rem;
+            border: 3px solid #fff;
+            border-radius: 50px;
+            text-shadow: 0 0 10px #fff;
+            box-shadow: 0 0 20px #ff0080;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .btn-invitar:hover {
+            transform: scale(1.1);
+        }
+
+        /* ------------------- SITIO PRINCIPAL ------------------- */
+        #sitio-principal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            color: #ff69b4;
+        }
+        .contenedor-superior {
+            position: absolute;
+            top: 5%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .titulo-principal {
+            font-size: 2rem;
+            text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4;
+            margin-bottom: 1rem;
+        }
+        .nombre {
+            font-size: 2.5rem;
+            text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+        }
+        .anillo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 5px solid #ff69b4;
+            border-radius: 50%;
+            box-shadow: 0 0 25px #ff69b4, 0 0 50px #ff69b4;
+            animation: girar 8s linear infinite;
+        }
+        .anillo-pequeno {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 150px;
+            height: 150px;
+            border: 3px solid #ff0080;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #ff0080, 0 0 40px #ff0080;
+            animation: girar 6s reverse linear infinite;
+        }
+        .elemento-flotante {
+            position: absolute;
+            color: #ff69b4;
+            text-shadow: 0 0 10px #ff69b4;
+            animation: flotar 20s linear infinite;
+        }
+        .kitty-flotante {
+            position: absolute;
+            font-size: 2rem;
+            color: #ff69b4;
+            text-shadow: 0 0 15px #ff69b4;
+            animation: flotar 25s linear infinite;
+        }
+        .btn-musica {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 105, 180, 0.3);
+            border: 2px solid #ff69b4;
+            border-radius: 25px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* ------------------- ANIMACIONES ------------------- */
+        @keyframes saltar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes girar {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes flotar {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(20deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- PANTALLA DE PRESENTACIÓN -->
+    <div id="presentacion">
+        <div class="kitty-icono">🎀</div>
+        <h1 class="titulo-presentacion">Para mi amor YARLYN SANDRA</h1>
+        <button class="btn-invitar" id="btnInvitar">¿QUIERES SER MI SAN VALENTÍN?</button>
+    </div>
+
+    <!-- SITIO PRINCIPAL -->
+    <div id="sitio-principal">
+        <div class="contenedor-superior">
+            <div class="titulo-principal">FELIZ DÍA DEL AMOR 💖</div>
+            <div class="nombre">YARLYN SANDRA</div>
+        </div>
+        <div class="anillo">
+            <div class="anillo-pequeno"></div>
+        </div>
+        <button class="btn-musica" id="btnMusica">Reproducir Música</button>
+        <audio id="musica" loop>
+            <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_0d505081a5.mp3?filename=romantic-piano-100-bpm-121529.mp3" type="audio/mpeg">
+        
+    </div>
+
+    <script>
+        // CONTROL PRESENTACIÓN
+        const btnInvitar = document.getElementById('btnInvitar');
+        const presentacion = document.getElementById('presentacion');
+        const sitioPrincipal = document.getElementById('sitio-principal');
+        const musica = document.getElementById('musica');
+        const btnMusica = document.getElementById('btnMusica');
+
+        // Botón de invitación
+        btnInvitar.addEventListener('click', () => {
+            presentacion.style.display = 'none';
+            sitioPrincipal.style.display = 'block';
+            crearElementosFlotantes();
+        });
+
+        // Control de música
+        btnMusica.addEventListener('click', () => {
+            if(musica.paused) {
+                musica.play();
+                btnMusica.textContent = "Pausar Música";
+            } else {
+                musica.pause();
+                btnMusica.textContent = "Reproducir Música";
+            }
+        });
+
+        // Crear elementos flotantes (sin imágenes externas!)
+        function crearElementosFlotantes() {
+            const textos = ["Te amo hoy y siempre", "Mi amor eterno", "Eres mi corazón", 
+                            "Contigo es todo", "Para siempre juntos", "Eres mi todo"];
+            
+            // Crear textos flotantes
+            setInterval(() => {
+                const texto = document.createElement('div');
+                texto.classList.add('elemento-flotante');
+                texto.textContent = textos[Math.floor(Math.random()*textos.length)];
+                texto.style.left = Math.random()*100 + '%';
+                texto.style.animationDuration = (Math.random()*20 + 10) + 's';
+                sitioPrincipal.appendChild(texto);
+                setTimeout(() => texto.remove(), 30000);
+            }, 1500);
+
+            // Crear Hello Kitty flotantes (con íconos de texto)
+            setInterval(() => {
+                const kitty = document.createElement('div');
+                kitty.classList.add('kitty-flotante');
+                kitty.textContent = "🎀";
+                kitty.style.left = Math.random()*100 + '%';
+                kitty.style.animationDuration = (Math.random()*25 + 15) + 's';
+                sitioPrincipal.appendChild(kitty);
+                setTimeout(() => kitty.remove(), 35000);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
